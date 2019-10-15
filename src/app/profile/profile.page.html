@@ -1,0 +1,193 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start" *ngIf="Journel">
+          <ion-back-button defaultHref="counsellor-tab/clients"></ion-back-button>
+      </ion-buttons>
+    <ion-button size="small" fill="clear" slot="start" *ngIf="!Journel">
+      <ion-menu-button size="small" color="dark"></ion-menu-button>
+    </ion-button>
+    
+      <ion-title>{{ username }}</ion-title>
+    
+   
+
+    <ion-icon *ngIf="!Journel" padding name="create" slot="end" fill="outline" shape="round" color="dark" (click)="newEntry =! newEntry">
+    </ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- <app-loading *ngIf="!posts"></app-loading> -->
+
+  <div id="profile-info" *ngIf="username">
+    <ion-grid *ngIf="!Journel">
+      <ion-row>
+        <ion-col size="4" class="user-image">
+          <img *ngIf="userDetail?.profilePic" class="profile-pic"
+            src="https://ucarecdn.com/{{ userDetail.profilePic }}/{{ scaleCrop }}/ " />
+          <img *ngIf="!userDetail?.profilePic" class="profile-pic" src="../../assets/icon/user.png">
+          <!-- <ion-img padding src="https://ucarecdn.com/{{
+              profilePic
+            }}/-/scale_crop/200x200/center/" class="profile-pic"></ion-img> -->
+        </ion-col>
+        <ion-col size="8" class="username">
+          <p>{{ username }}</p>
+          <ion-button shape="round" color="warning" size="small" routerLink="/tabs/edit-profile">
+            <ion-icon name="cog" class="space" color="dark"></ion-icon>
+            profile
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+  <!-- // "angularfire2": "^4.0.0-rc.0", -->
+  <div *ngIf="newEntry">
+    <ion-card>
+      <ion-card-title slot="start">
+        <ion-textarea padding placeholder="Journal No." [(ngModel)]="title"></ion-textarea>
+      </ion-card-title>
+      <ion-textarea padding placeholder="What are you Soching?" class="textbox" [(ngModel)]="desc"></ion-textarea>
+      <ion-input class="textbox" style="    padding: 0 30px !important;" placeholder="Enter Post url"
+        [(ngModel)]="posturl"></ion-input>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-icon padding color="primary" (click)="uploadFile()" class="icons" name="camera"></ion-icon>
+            <input type="file" *ngIf="!imageURL" (change)="fileChanged($event)" class="filebtn" #fileButton />
+          </ion-col>
+          <ion-col>
+            <ion-icon padding color="primary" *ngIf="!ispause" (click)="startRecord()" class="icons" name="microphone">
+            </ion-icon>
+            <ion-icon padding color="primary" *ngIf="ispause" (click)="stopRecord()" class="icons" name="pause">
+            </ion-icon>
+            <input type="file" *ngIf="!imageURL" (change)="fileChanged($event)" class="filebtn" #fileButton />
+          </ion-col>
+          <!-- <ion-col>
+            <ion-icon padding color="primary" (click)="uploadFile()" class="icons" name="videocam"></ion-icon>
+            <input type="file" *ngIf="!imageURL" (change)="fileChanged($event)" class="filebtn" #fileButton />
+          </ion-col>
+          <ion-col>
+            <ion-icon padding color="primary" (click)="uploadFile()" class="icons" name="document"></ion-icon>
+            <input type="file" *ngIf="!imageURL" (change)="fileChanged($event)" class="filebtn" #fileButton />
+          </ion-col> -->
+        </ion-row>
+      </ion-grid>
+
+      <ion-card-content>
+        <ion-grid>
+          <div *ngIf="imageURL">
+            <ion-img src="https://ucarecdn.com/{{ imageURL }}/-/preview/{{
+                activeEffect
+              }}"></ion-img>
+
+            <ion-row>
+              <ion-col [class.active]="activeEffect == effects.effect1" (click)="setSelected('effect1')">
+                <ion-img src="https://ucarecdn.com/{{ imageURL }}/{{ scaleCrop }}/"></ion-img>
+              </ion-col>
+              <ion-col [class.active]="activeEffect == effects.effect2" (click)="setSelected('effect2')">
+                <ion-img src="https://ucarecdn.com/{{ imageURL }}/{{ scaleCrop }}/{{
+                    effects.effect2
+                  }}"></ion-img>
+              </ion-col>
+              <ion-col [class.active]="activeEffect == effects.effect3" (click)="setSelected('effect3')">
+                <ion-img src="https://ucarecdn.com/{{ imageURL }}/{{ scaleCrop }}/{{
+                    effects.effect3
+                  }}"></ion-img>
+              </ion-col>
+              <ion-col [class.active]="activeEffect == effects.effect4" (click)="setSelected('effect4')">
+                <ion-img src="https://ucarecdn.com/{{ imageURL }}/{{ scaleCrop }}/{{
+                    effects.effect4
+                  }}"></ion-img>
+              </ion-col>
+              <ion-col [class.active]="activeEffect == effects.effect5" (click)="setSelected('effect5')">
+                <ion-img src="https://ucarecdn.com/{{ imageURL }}/{{ scaleCrop }}/{{
+                    effects.effect5
+                  }}"></ion-img>
+              </ion-col>
+            </ion-row>
+          </div>
+
+          <div *ngIf="audiourltest">
+            <audio controls>
+              <source src="{{audiourltest}}">
+              Your browser does not support the HTML5 Audio element.
+            </audio>
+          </div>
+
+          <ion-row *ngIf="noFace">
+            <ion-col size="12">
+              <p class="no-face">Images with faces perform 150 times better!</p>
+            </ion-col>
+          </ion-row>
+          <ion-item lines="none">
+            <ion-button shape="round" size="default" color="primary" slot="start" (click)="createPost()">POST
+              {{audiourl}}
+            </ion-button>
+            <ion-fab-button translucent="true" color="danger" slot="end" class="icons">
+              <ion-icon color="light" name="close" mode="ios" (click)="newEntry = false"></ion-icon>
+            </ion-fab-button>
+          </ion-item>
+          <ion-item>
+            <ion-label>Post Status</ion-label>
+            <!-- <ion-radio slot="start" [(ngModel)]="poststatus" (ngModelchange)="poststatuschange()"></ion-radio> -->
+            <p>Public</p>
+            <ion-toggle [(ngModel)]="poststatus"></ion-toggle>
+            <p>Private</p>
+          </ion-item>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="posts" style="padding-top: 35px;">
+    <!-- <div class="image" *ngFor="let post of posts"> -->
+    <ion-card *ngFor="let post of posts.slice().reverse()">
+      <div *ngIf="post.image">
+        <ion-img src="https://ucarecdn.com/{{ post.image }}/{{ scaleCrop }}/"></ion-img>
+      </div>
+      <div *ngIf="post.audiourl">
+        <audio controls>
+          <source [src]="post.audiourl">
+          Your browser does not support the HTML5 Audio element.
+        </audio>
+      </div>
+      <ion-card-content>
+        <ion-item lines="none">
+          <ion-avatar><img *ngIf="post.profilephoto"
+              src="https://ucarecdn.com/{{ post.profilephoto }}/{{ scaleCrop }}/ " />
+            <img *ngIf="!post.profilephoto" src="../../assets/icon/user.png">
+          </ion-avatar>
+          <ion-card-subtitle padding color="dark"> Me </ion-card-subtitle>
+          <ion-icon name="share" slot="end" size="small" (click)="share(post)" color="warning"></ion-icon>
+        </ion-item>
+        <ion-card-title padding>
+          {{ post.title }}
+        </ion-card-title>
+        <p padding>{{ post.desc }}</p>
+        <ion-button expand="block" (click)="showComments = true" *ngIf="Journel">
+        <ion-label color="light"> Notes </ion-label>
+          <ion-icon name="book" slot="end" color="light" ></ion-icon>
+        </ion-button>
+
+        <ion-card-content *ngIf="showComments" lines="none">
+            <ion-label [hidden]="!post.notes && post.notes.length < 0" *ngFor="let comment of post.notes">{{comment.msg}}<br></ion-label>
+          <ion-item lines="none">
+              <ion-textarea auto-grow="true" auto-focus="true" placeholder="Write notes here" [(ngModel)]="newComment"></ion-textarea>
+            <ion-button slot="end" (click)="addcomment(post)">
+              <ion-icon name="save"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-card-content>
+      </ion-card-content>
+    </ion-card>
+    <!-- <ion-card>
+        <ion-card-subtitle class="title">
+          <p>Journal: {{ post.title }}</p>
+        </ion-card-subtitle>
+        <img (click)="goTo(post)" class="main-image"
+          src="https://ucarecdn.com/{{ post }}/-/scale_crop/200x200/center/" />
+      </ion-card> -->
+    <!-- </div> -->
+  </div>
+</ion-content>

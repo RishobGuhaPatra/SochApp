@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button size="small" fill="clear" slot="start">
+      <ion-menu-button size="small" color="dark"></ion-menu-button>
+    </ion-button>
+    <ion-img src="assets/icon/LoGo.png"></ion-img>
+    <ion-icon padding name="person-add" slot="end" (click)="counselorChat()" fill="outline" shape="round" size="small"
+      color="dark"></ion-icon>
+    <ion-progress-bar *ngIf="!posts" type="indeterminate"></ion-progress-bar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding *ngIf="posts">
+  <ion-card *ngFor="let post of posts;let i = index">
+    <div *ngIf="post.image">
+      <ion-img src="https://ucarecdn.com/{{ post.image }}/{{ scaleCrop }}/"></ion-img>
+    </div>
+    <div *ngIf="post.audiourl">
+      <audio controls>
+        <source [src]="post.audiourl">
+        Your browser does not support the HTML5 Audio element.
+      </audio>
+    </div>
+    <ion-card-content>
+      <ion-item lines="none">
+        <div style="    display: flex;
+        align-items: center;">
+          <ion-avatar><img *ngIf="post.profilephoto"
+              src="https://ucarecdn.com/{{ post.profilephoto }}/{{ scaleCrop }}/ " />
+            <img *ngIf="!post.profilephoto" src="../../assets/icon/user.png">
+          </ion-avatar>
+          <p style="    padding-left: 8px;">{{post.username}}</p>
+        </div>
+        <ion-card-subtitle padding color="dark">{{
+          post.author
+        }}</ion-card-subtitle>
+        <ion-icon name="share" slot="end" size="small" (click)="share(post)" color="warning"></ion-icon>
+      </ion-item>
+      <ion-card-title padding>
+        {{ post.title }}
+      </ion-card-title>
+      <p padding>{{ post.desc }}</p>
+      <p padding *ngIf="post.posturl" (click)="openurl(post.posturl)">{{ post.posturl }}</p>
+      <ion-item lines="none">
+        <ion-chip (click)="toggleHeart()" color="warning">
+          <ion-icon name="heart" *ngIf="!post.islike" size="small" color="warning" (click)="like(post,'like',i)">
+          </ion-icon>
+          <ion-icon name="heart" *ngIf="post.islike" size="small" color="warning" (click)="like(post,'unlike',i)">
+          </ion-icon>
+          <ion-label *ngIf="post.like && post.like.length > 0">
+            {{ post.like.length }}
+          </ion-label>
+        </ion-chip>
+        <ion-chip (click)="toggleHeart()" color="warning">
+          <ion-icon name="heart-dislike" *ngIf="post.isunlike" size="small" color="warning"
+            (click)="unlike(post,'unlike',i)">
+          </ion-icon>
+          <ion-icon name="heart-dislike" *ngIf="!post.isunlike" size="small" color="warning"
+            (click)="unlike(post,'like',i)">
+          </ion-icon>
+          <ion-label *ngIf="post.unlike && post.unlike.length > 0">
+            {{ post.unlike.length }}
+          </ion-label>
+        </ion-chip>
+        <ion-icon name="text" slot="end" color="warning" (click)="commentopen(post,i)"></ion-icon>
+      </ion-item>
+      <ion-card-content *ngIf="post.iscomment">
+        <ion-chip [hidden]="!post.comment && post.comment.length < 0" *ngFor="let comment of post.comment">
+            <ion-icon name="person"></ion-icon>
+          <label>{{comment.msg}}</label>
+        </ion-chip>
+        <ion-item line="none">
+          <ion-chip outline="true" color="tertiary">
+            <ion-textarea placeholder="comment here" [(ngModel)]="newComment"></ion-textarea>
+          </ion-chip>
+          <ion-button slot="end" (click)="addcomment(post)">
+            <ion-icon name="send"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-card-content>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

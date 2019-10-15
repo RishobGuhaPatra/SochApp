@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "679893219331",
+    "firebase_url": "https://soch-fac74.firebaseio.com",
+    "project_id": "soch-fac74",
+    "storage_bucket": "soch-fac74.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:679893219331:android:65c90561be2b038d",
+        "android_client_info": {
+          "package_name": "com.sochapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "679893219331-tr9gi7uumja27fitk911hpdjghigl57f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sochapp",
+            "certificate_hash": "d5c643d5da06e520f2a38d8316a98261c68a5cb8"
+          }
+        },
+        {
+          "client_id": "679893219331-9e6st9b6qrj8hjiu0idbh8gtqle303uq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPMLkgCKGJ2IPD2wJUJMpNk49-AASq7WY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "679893219331-9e6st9b6qrj8hjiu0idbh8gtqle303uq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

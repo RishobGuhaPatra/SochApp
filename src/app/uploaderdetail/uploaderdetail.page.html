@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding style="--background: #ffffff;" *ngIf="counsellorDetail">
+  <!-- <div class="closeicon">
+    <ion-icon name="close" (click)="back()"></ion-icon>
+  </div> -->
+  <ion-row>
+    <ion-col>
+      <div class="counsellor-list">
+        <img src="../../assets/icon/user.png">
+        <div class="content">
+          <p class="name">{{counsellorDetail.name}}</p>
+          <p class="total">45 Clients</p>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+  <div class="detail">
+    <ul>
+      <li>Name : {{counsellorDetail.name}}</li>
+      <!-- <li>Phone : {{counsellorDetail.phone}}</li> -->
+      <li>Email : {{counsellorDetail.email}}</li>
+      <li>Skills : {{counsellorDetail.skills}}</li>
+      <li>Education :{{counsellorDetail.educztion}}</li>
+      <li>Bio : {{counsellorDetail.bio}}</li>
+      <li>Rate : </li>
+      <li>Reviews : {{counsellorDetail.reviews}}</li>
+      <li style="    display: flex;
+      align-items: center;">Set Default : <ion-toggle style="padding-left: 20px" [(ngModel)]="setDefault"
+          (ngModelChange)="changeStatus()"></ion-toggle>
+      </li>
+    </ul>
+    <ion-button shape="round" [routerLink]="['/ratelist',counsellorId,counsellorDetail.name]" size="medium"
+      class="button" lines="none" color="primary" fill="solid" expand="full">
+      Next
+    </ion-button>
+  </div>
+</ion-content>

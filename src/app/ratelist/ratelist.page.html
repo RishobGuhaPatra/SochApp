@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding style="--background: #fcfcfc;">
+  <ion-card color="light">
+    <ion-card-content color="light">
+      <ion-card-subtitle>
+        <ion-icon name="clock"></ion-icon>
+        Scheduled Plans
+      </ion-card-subtitle>
+      <ion-item
+        *ngFor="let s of scheculePlan"
+        class="check"
+        color="light"
+        lines="none"
+      >
+        <ion-checkbox [(ngModel)]="s.value"></ion-checkbox>
+        <p>{{ s.diplayPrice }} fo</p>
+        <p>r {{ s.seesion }} Sessions</p>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card color="light">
+    <ion-card-content color="light">
+      <ion-card-subtitle>
+        <ion-icon name="help-buoy"></ion-icon>
+        Instant Plans
+      </ion-card-subtitle>
+      <ion-item
+        *ngFor="let i of instantPlan"
+        class="check"
+        color="light"
+        lines="none"
+      >
+        <ion-checkbox [(ngModel)]="i.value"></ion-checkbox>
+        <p>{{ i.diplayPrice }} fo</p>
+        <p>r {{ i.seesion }} Sessions</p>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button
+    (click)="gotoPaypal()"
+    color="primary"x
+    fill="solid"
+    expand="block"
+  >
+    Next
+  </ion-button>
+
+</ion-content>

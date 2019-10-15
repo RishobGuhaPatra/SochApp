@@ -1,0 +1,85 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button defaultHref="tabs"></ion-back-button>
+		</ion-buttons>
+		<ion-title>Edit Profile</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+	<app-loading *ngIf="busy"></app-loading>
+	<div *ngIf="!busy">
+
+		<input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)" />
+
+		<div>
+			<ion-avatar>
+				<img *ngIf="userDetail?.profilePic" src="https://ucarecdn.com/{{ userDetail.profilePic }}/{{ scaleCrop }}/ " />
+				<img *ngIf="!userDetail?.profilePic" src="../../assets/icon/user.png">
+			</ion-avatar>
+		</div>
+
+
+		<div class="profile-info">
+			<ion-item-divider position="floating">
+				<ion-label>
+					Security
+				</ion-label>
+			</ion-item-divider>
+			<ion-item>
+				<ion-label position="floating">Username</ion-label>
+				<ion-input [(ngModel)]="userDetail.username"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="floating">New Password?</ion-label>
+				<ion-input [(ngModel)]="userDetail.newpassword"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="floating">Enter old password</ion-label>
+				<ion-input [(ngModel)]="userDetail.password"></ion-input>
+			</ion-item>
+
+			<ion-item-divider position="floating">
+				<ion-label>
+					Profile
+				</ion-label>
+			</ion-item-divider>
+
+			<ion-item>
+				<ion-label position="floating">Name</ion-label>
+				<ion-input [(ngModel)]="userDetail.name"></ion-input>
+				<ion-icon name="close-circle" slot="end"></ion-icon>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="floating">Phone Number</ion-label>
+				<ion-input [(ngModel)]="userDetail.phonenumber"></ion-input>
+				<ion-icon name="close-circle" slot="end"></ion-icon>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="floating">Email</ion-label>
+				<ion-input [(ngModel)]="userDetail.email"></ion-input>
+				<ion-icon name="close-circle" slot="end"></ion-icon>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="floating">Interests</ion-label>
+				<ion-input [(ngModel)]="userDetail.interest"></ion-input>
+				<ion-icon name="close-circle" slot="end"></ion-icon>
+			</ion-item>
+			<ion-item>
+				<ion-label position="floating">Brief Background</ion-label>
+				<ion-input [(ngModel)]="userDetail.background"></ion-input>
+				<ion-icon name="close-circle" slot="end"></ion-icon>
+			</ion-item>
+			<ion-button class="button" fill="solid" expand="block" color="primary" (click)="updateDetails()">Save</ion-button>
+		</div>
+
+	</div>
+
+</ion-content>

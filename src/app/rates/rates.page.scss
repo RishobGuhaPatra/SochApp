@@ -1,0 +1,13 @@
+ion-toolbar {
+    --background: rgb(255, 255, 255);
+  }
+  .contentCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  ion-segment-button {
+    --color: #000 !important;
+    --color-checked: var(--ion-color-tertiary-contrast);
+    border-bottom: 0px solid rgb(255, 255, 255);
+  }

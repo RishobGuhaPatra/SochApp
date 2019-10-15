@@ -1,0 +1,49 @@
+<ion-header color="dark">
+  <ion-toolbar color="dark">
+    <ion-icon name="close" color="light" slot="end" size="large" padding (click)="close()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark" class="ion-text-center">
+  <ion-grid style="height: 100%">
+    <ion-row justify-content-center align-items-center style="height: 100%">
+      <ion-card color="light">
+        <ion-card-header>
+          <ion-card-subtitle>Tell us about</ion-card-subtitle>
+<br>
+          <div class="counsellor-list">
+              <img src="../../assets/icon/user.png">
+            </div>
+
+          <ion-card-title> Name :{{CounsellorName}}</ion-card-title>
+
+          
+        </ion-card-header>
+        <ion-toolbar >
+            <ion-icon *ngFor="let key of selected_star" name="star" color="primary" size="large" (click)="checkStar(key)"></ion-icon>
+            <ion-icon *ngFor="let key of unselected_star" name="star-outline" color="primary" size="large" (click)="checkStar(key)"></ion-icon>
+            
+        </ion-toolbar>
+
+        <ion-card-content>
+          <ion-label>Leave a Review</ion-label>
+            <ion-item id="rounded" lines="none">
+                <ion-textarea type="text" placeholder="Write here..." [(ngModel)]="review" auto-grow="true" text-wrap></ion-textarea>
+              </ion-item>
+              <br>
+              <ion-label>Share Counselor</ion-label>
+          <ion-toolbar translucent>
+            <ion-icon padding name="logo-instagram" (click)="shareviaInsta()"></ion-icon>
+            <ion-icon padding name="logo-facebook" (click)="shareviafacebook()"></ion-icon> 
+            <ion-icon padding name="logo-whatsapp" (click)="shareviaWhatsapp()"></ion-icon> 
+            <ion-icon padding name="logo-twitter" (click)="shareviaTwitter()"></ion-icon>
+          </ion-toolbar>
+          <br>
+              <ion-button expand="block" (click)="submit()">
+                Submit
+              </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content>

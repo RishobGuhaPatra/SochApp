@@ -1,0 +1,71 @@
+<div class="outerCard" lines="none">
+  <ion-item lines="none">
+    <br>
+  </ion-item>
+    <ion-item lines="none">
+        <ion-img src="assets/login/LOGO3.png" class="logo"></ion-img>
+      </ion-item>
+
+<ion-grid text-center>
+  <ion-row>
+      <ion-col>  
+      <br>
+      <br>
+    <ion-item lines="block">
+          <ion-label class="pin-heading" text-center position="floating">Enter PIN</ion-label>
+          <ion-input type="password" [(ngModel)]="pin" text-center readonly></ion-input>
+        </ion-item>
+        <ion-item lines="none"></ion-item>
+      </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button shape="round" size="large" fill="outline" (click)="handleInput('1')">1</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button shape="round" size="large" fill="outline" (click)="handleInput('2')">2</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button shape="round" size="large" fill="outline" (click)="handleInput('3')">3</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button shape="round" size="large" fill="outline" (click)="handleInput('4')">4</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button shape="round" size="large" fill="outline" (click)="handleInput('5')">5</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button shape="round" size="large" fill="outline" (click)="handleInput('6')">6</ion-button>
+    </ion-col>
+  </ion-row>
+   <ion-row>
+    <ion-col>
+      <ion-button shape="round" size="large" fill="outline" (click)="handleInput('7')">7</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button shape="round" size="large" fill="outline" (click)="handleInput('8')">8</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button shape="round" size="large" fill="outline" (click)="handleInput('9')">9</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+    </ion-col>
+    <ion-col>
+        <ion-button shape="round" size="large" fill="outline" (click)="handleInput('0')">0</ion-button>
+      </ion-col>
+    <ion-col>
+      <ion-button shape="round" size="large" fill="clear" (click)="handleInput('clear')"><ion-icon name="backspace"></ion-icon></ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <br>
+    </ion-col>
+  </ion-row>
+  
+</ion-grid>
+</div>

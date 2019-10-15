@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs"></ion-back-button>
+    </ion-buttons>
+    <ion-title> Session Pricing</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-toolbar>
+  <ion-segment mode="md" (ionChange)="segmentChanged($event)">
+    <ion-segment-button mode="md" value="Calls">
+      <div class="contentCenter">
+        <ion-text slot=end class="segment_Text">Scheduled</ion-text>
+      </div>
+    </ion-segment-button>
+
+    <ion-segment-button mode="md" value="Chats" checked>
+      <div class="contentCenter">
+        <ion-text slot=end class="segment_Text">Instant</ion-text>
+      </div>
+    </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>
+
+
+<ion-content>
+    <ion-list *ngIf="segmentTab == 'Chats' " no-padding>
+      <img style="height: 100%;
+      width: 100%;" src="assets/imgs/Inst-Sessions.png">
+    </ion-list>
+
+    <ion-list *ngIf="segmentTab == 'Calls' " no-padding>
+    <img style="height: 100%;
+    width: 100%;" src="assets/imgs/Sched-Sessions.png">
+    </ion-list>
+    <ion-list *ngIf="segmentTab == 'group' " no-padding>
+        <img style="height: 100%;
+        width: 100%;" src="assets/imgs/Top-up.png">
+        </ion-list>
+</ion-content>
+

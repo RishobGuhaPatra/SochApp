@@ -1,0 +1,152 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="tabs/uploader"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- <ion-item>
+      <ion-label>Allow Notifications</ion-label>
+      <ion-toggle [(ngModel)]="notification" slot="end" (ionChange)="notificationFlag()"></ion-toggle>
+  </ion-item>
+  <ion-item>
+      <ion-label>Do Not Disturb</ion-label>
+      <ion-toggle [(ngModel)]="DND" slot="end" (ionChange)="DNDFlag()"></ion-toggle>
+  </ion-item> -->
+  <!-- <ion-item (click)="showPasswordField=(showPasswordField?false:true)">
+        <ion-label>Password</ion-label>
+        <ion-button expand="block" style="padding-left: 5px" slot="end" (click)="SavePassword()">Save</ion-button>
+    </ion-item>
+    <ion-item class="ml-16" *ngIf="showPasswordField">
+        <ion-icon padding size="small" name="lock" color="dark"></ion-icon>
+        <ion-input pattern="password" padding placeholder="Password" [(ngModel)]="password" type="password" color="dark" inputmode="password" class="input">
+        </ion-input>
+    </ion-item>
+    <ion-item class="ml-16" *ngIf="showPasswordField">
+        <ion-icon padding size="small" name="lock" color="dark"></ion-icon>
+        <ion-input pattern="password" padding placeholder="Confirm Password" [(ngModel)]="confirmpassword" type="password" color="dark" inputmode="password" class="input">
+            </ion-input>
+    </ion-item> -->
+    <ion-item (click)="showPinField=(showPinField?false:true)">
+        <ion-label>Password/Pin</ion-label>
+        <ion-button expand="block" class="pl-5" slot="end" *ngIf="pin.length==4 && confirmpin.length==4" (click)="SavePin()">Save</ion-button>
+    </ion-item>
+    <ion-item class="ml-16" *ngIf="showPinField">
+        <ion-icon padding size="small" name="lock" color="dark"></ion-icon>
+        <ion-input pattern="password" padding placeholder="Pin" [(ngModel)]="pin" type="password" color="dark" inputmode="password" class="input">
+        </ion-input>
+    </ion-item>
+    <ion-item class="ml-16" *ngIf="showPinField">
+        <ion-icon padding size="small" name="lock" color="dark"></ion-icon>
+        <ion-input pattern="password" padding placeholder="Confirm Pin" [(ngModel)]="confirmpin" type="password" color="dark" inputmode="password" class="input">
+            </ion-input>
+    </ion-item>
+    <ion-item (click)="showDDInfo=(showDDInfo?false:true)">
+        <ion-label>Direct Deposit Information</ion-label>
+        <ion-button expand="block" class="pl-5" slot="end" *ngIf="DirectDepositInfo.routingNo || DirectDepositInfo.accountNo" (click)="SaveDDInfo()">Save</ion-button>
+    </ion-item>
+    <ion-item *ngIf="showDDInfo" class="ml-16">
+        <ion-input pattern="text" padding placeholder="Routing Number" [(ngModel)]="DirectDepositInfo.routingNo" type="text" color="dark" class="input">
+            </ion-input>
+    </ion-item>
+    <ion-item *ngIf="showDDInfo" class="ml-16">
+        <ion-input pattern="text" padding placeholder="Account Number" [(ngModel)]="DirectDepositInfo.accountNo" type="text" color="dark" class="input">
+            </ion-input>
+    </ion-item>
+    <ion-item (click)="showZoomInfo=(showZoomInfo?false:true)">
+        <ion-label>Zoom Details</ion-label>
+        <ion-button expand="block" class="pl-5" slot="end" *ngIf="ZoomCred.link || ZoomCred.password" (click)="SaveZoomInfo()">Save</ion-button>
+    </ion-item>
+    <ion-item *ngIf="showZoomInfo" class="ml-16">
+        <ion-input pattern="text" padding placeholder="Meeting Link" [(ngModel)]="ZoomCred.link" type="text" color="dark" class="input">
+            </ion-input>
+    </ion-item>
+    <ion-item *ngIf="showZoomInfo" class="ml-16">
+        <ion-input pattern="text" padding placeholder="Meeting Password" [(ngModel)]="ZoomCred.password" type="password" color="dark" class="input">
+            </ion-input>
+    </ion-item>
+  <!-- <ion-item>
+      <ion-label>Calendar Updates</ion-label>
+      <ion-toggle slot="end"></ion-toggle>
+  </ion-item> -->
+  <!-- <ion-item>
+      <ion-label> Paypal Payments</ion-label>
+      <ion-button color="dark" expand="block" slot="end" (click)="makePayment()">Connect</ion-button>
+  </ion-item> -->
+  <ion-item>
+      <ion-label>Privacy Policy</ion-label>
+      <ion-button expand="block" slot="end" routerLink="/privacy-policy">View</ion-button>
+  </ion-item>
+  <ion-item>
+      <ion-label>Terms of Agreement</ion-label>
+      <ion-button expand="block" slot="end" routerLink="/terms-of-conditions">View</ion-button>
+  </ion-item>
+  <!-- <ion-item>
+  <ion-label>Allow Notifications</ion-label>
+  <ion-toggle slot="end"></ion-toggle>
+</ion-item>
+<ion-item>
+  <ion-label>Email Updates</ion-label>
+  <ion-toggle slot="end"></ion-toggle>
+</ion-item>
+<ion-item>
+  <ion-label>Calendar Updates</ion-label>
+  <ion-toggle slot="end"></ion-toggle>
+</ion-item>
+<ion-item>
+  <ion-label> Paypal Payments</ion-label>
+  <ion-button color="dark" expand="block" slot="end" (click)="makePayment()">Connect</ion-button>
+</ion-item>
+<ion-item>
+  <ion-label>Privacy Policy</ion-label>
+  <ion-button expand="block" slot="end">View</ion-button>
+</ion-item>
+<ion-item>
+  <ion-label>Terms of Agreement</ion-label>
+  <ion-button expand="block" slot="end">View</ion-button>
+</ion-item> -->
+  <!-- new <ion-item>
+      <ion-label>Share</ion-label>
+      <ion-list> -->
+          <!-- <ion-chip  color="primary"> -->
+          <!-- new <ion-icon name="share" slot="end" (click)="share()" size="small" color="warning"></ion-icon> -->
+          <!-- </ion-chip> -->
+          <!-- <ion-chip (click)="gotoInsta()" color="primary"><ion-icon name="logo-instagram"></ion-icon></ion-chip>
+      <ion-chip (click)="gotofb()" color="primary"><ion-icon name="logo-facebook"></ion-icon> </ion-chip>
+      <ion-chip color="primary"><ion-icon name="logo-whatsapp"></ion-icon> </ion-chip>
+      <ion-chip color="primary"><ion-icon name="logo-twitter"></ion-icon> </ion-chip> -->
+      <!-- new </ion-list>
+  </ion-item> -->
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-label> Share</ion-label>
+      <br />
+      <br />
+      <ion-fab-button (click)="share()">
+          <ion-icon name="share"></ion-icon>
+      </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+      <ion-label> Follow Us!</ion-label>
+      <br />
+      <br />
+      <ion-fab-button>
+          <ion-icon name="thumbs-up"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="end">
+          <ion-fab-button (click)="gotofb()">
+              <ion-icon name="logo-facebook"></ion-icon>
+          </ion-fab-button>
+      </ion-fab-list>
+      <ion-fab-list side="start">
+          <ion-fab-button (click)="gotoInsta()">
+              <ion-icon name="logo-instagram"></ion-icon>
+          </ion-fab-button>
+      </ion-fab-list>
+  </ion-fab>
+</ion-content>

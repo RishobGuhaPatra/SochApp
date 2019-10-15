@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="uploader"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Purchased Sessions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-row *ngFor="let a of allSessions">
+    <ion-card *ngFor="let s of a.val.selectedPlan.seesionList;let i = index" (click)="gotoChat(a,i)">
+      <ion-list lines="none">
+        <h4 *ngIf="a.val.counsellorName" style="padding-left: 20px;">{{a.val.counsellorName}}</h4>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+          </ion-avatar>
+          <h4 *ngIf="a.val.selectedPlan.isScheduled">Scheduled Session:</h4>
+          <h4 *ngIf="!a.val.selectedPlan.isScheduled">Random Session:</h4>
+          <ion-button (click)="$event.stopPropagation()" slot="end" fill="clear">
+            <ion-icon name="call"> </ion-icon>
+          </ion-button>
+          <ion-button slot="end" fill="clear">
+            <ion-icon name="text"> </ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-item class="ion-text-wrap">
+          <ion-text slot="start" *ngIf="a.val.selectedPlan.isScheduled">Tuesday 9:30PM</ion-text>
+          <ion-text slot="start" *ngIf="!a.val.selectedPlan.isScheduled">Available Now</ion-text>
+          <ion-text slot="end">Pending</ion-text>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </ion-row>
+  <!-- 
+  <ion-card>
+    <ion-list lines="none">
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        </ion-avatar>
+        <h4>Random Session:</h4>
+        <ion-button slot="end" fill="clear">
+          <ion-icon name="call"> </ion-icon>
+        </ion-button>
+        <ion-button slot="end" fill="clear">
+          <ion-icon name="text"> </ion-icon>
+        </ion-button>
+      </ion-item>
+      <ion-item class="ion-text-wrap">
+        <ion-text slot="start">Available Now</ion-text>
+        <ion-text slot="end">Pending</ion-text>
+      </ion-item>
+    </ion-list>
+  </ion-card> -->
+  <!-- 
+  <ion-card>
+    <ion-list lines="none">
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        </ion-avatar>
+        <h4>Random Session:</h4>
+        <ion-button slot="end" fill="clear">
+          <ion-icon name="call"> </ion-icon>
+        </ion-button>
+        <ion-button slot="end" fill="clear">
+          <ion-icon name="text"> </ion-icon>
+        </ion-button>
+      </ion-item>
+      <ion-item class="ion-text-wrap">
+        <ion-text slot="start">Available 9AM - 5PM</ion-text>
+        <ion-text slot="end">Pending</ion-text>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-list lines="none">
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        </ion-avatar>
+        <h4>Scheduled Session:</h4>
+        <ion-button slot="end">
+          View
+        </ion-button>
+      </ion-item>
+      <ion-item class="ion-text-wrap">
+        <ion-text slot="start">Saturday 9:30PM</ion-text>
+        <ion-text slot="end">Complete</ion-text>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-list lines="none">
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        </ion-avatar>
+        <h4>Random Session:</h4>
+        <ion-button slot="end">
+          View
+        </ion-button>
+      </ion-item>
+      <ion-item class="ion-text-wrap">
+        <ion-text slot="start">Thursday 6:49PM</ion-text>
+        <ion-text slot="end">Complete</ion-text>
+      </ion-item>
+    </ion-list>
+  </ion-card> -->
+</ion-content>

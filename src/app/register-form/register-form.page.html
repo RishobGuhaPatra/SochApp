@@ -1,0 +1,220 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-icon name="arrow-back" ></ion-icon>
+		<ion-title>Counselor Registration</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item-divider>
+    <ion-label>
+      Login Information
+    </ion-label>
+  </ion-item-divider>
+
+	<ion-item>
+		<ion-icon padding size="small" name="mail" color="dark"></ion-icon>
+		<ion-input pattern="email" placeholder="Email" autocorrect="on" type="text" color="dark"
+			padding class="input"></ion-input>
+	</ion-item>
+
+  <ion-item>
+		<ion-icon padding size="small" name="lock" color="dark"></ion-icon>
+		<ion-input pattern="password" padding placeholder="Password"  type="password" color="dark"
+			inputmode="password" class="input">
+		</ion-input>
+	</ion-item>
+
+	<ion-item>
+		<ion-icon padding size="small" name="lock" color="dark"></ion-icon>
+		<ion-input pattern="password" padding placeholder="Confirm Password" type="password"
+			color="dark" inputmode="password" class="input">
+		</ion-input>
+  </ion-item>
+
+  <ion-item-divider>
+    <ion-label>
+      Personal Information
+    </ion-label>
+  </ion-item-divider>
+
+  <ion-item>
+    <ion-input
+      pattern="name"
+      placeholder="First Name/Preferred Name"
+      autocorrect="on"
+      type="text"
+      color="dark"
+      padding
+      class="input"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      pattern="name"
+      placeholder="Middle Name"
+      autocorrect="on"
+      type="text"
+      color="dark"
+      padding
+      class="input"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      pattern="name"
+      placeholder="Last Name"
+      autocorrect="on"
+      type="text"
+      color="dark"
+      padding
+      class="input"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Gender</ion-label>
+    <ion-select placeholder="Select One">
+      <ion-select-option value="f"> Female</ion-select-option>
+      <ion-select-option value="m"> Male</ion-select-option>
+      <ion-select-option value="m"> Prefer not to answer</ion-select-option>
+      <ion-select-option value="m"> Other</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>MM DD YY</ion-label>
+    <ion-datetime
+      displayFormat="MM DD YY"
+      placeholder="Select Date"
+    ></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      pattern="name"
+      placeholder="Occupation"
+      autocorrect="on"
+      type="text"
+      color="dark"
+      padding
+      class="input"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      pattern="name"
+      placeholder="Phone Number"
+      autocorrect="on"
+      type="text"
+      color="dark"
+      padding
+      class="input"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      pattern="name"
+      placeholder="Address"
+      autocorrect="on"
+      type="text"
+      color="dark"
+      padding
+      class="input"
+    ></ion-input>
+  </ion-item>
+
+  <ion-label padding >Education</ion-label>
+  <ion-item>
+    <ion-textarea placeholder="Please write any formal training or education you have."></ion-textarea>
+  </ion-item>
+
+<ion-label padding >Short Biography</ion-label>
+  <ion-item>
+    <ion-textarea placeholder="Please write within 200 words."></ion-textarea>
+  </ion-item>
+
+  <ion-item-divider>
+    <ion-label>
+      Preferred Topics of Counseling
+    </ion-label>
+  </ion-item-divider>
+
+  <ion-item lines="none"
+    ><ion-checkbox color="primary"></ion-checkbox
+    ><ion-label padding>Depression</ion-label></ion-item
+  >
+  <ion-item lines="none">
+    <ion-checkbox color="primary"></ion-checkbox
+    ><ion-label padding>Anxiety</ion-label>
+  </ion-item>
+  <ion-item lines="none"
+    ><ion-checkbox color="primary"></ion-checkbox
+    ><ion-label padding> Relationship issues</ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-checkbox color="primary"></ion-checkbox
+    ><ion-label padding> Social isolation</ion-label>
+  </ion-item>
+  <ion-item lines="none"
+    ><ion-checkbox color="primary"></ion-checkbox
+    ><ion-label padding>Life transition challenges</ion-label></ion-item
+  >
+  <ion-item lines="none"
+    ><ion-checkbox color="primary" ></ion-checkbox
+    ><ion-label padding class="ion-text-wrap">
+      Eating disorders / Body image issues
+    </ion-label></ion-item
+  >
+  <ion-item lines="none"
+    ><ion-checkbox color="primary"></ion-checkbox
+    ><ion-label padding> Addiction support </ion-label></ion-item
+  >
+  <ion-item lines="none">
+    <ion-checkbox color="primary"></ion-checkbox
+    ><ion-label padding> Academic or work challenges </ion-label></ion-item
+  >
+  <ion-item lines="none">
+    <ion-checkbox color="primary"></ion-checkbox
+    ><ion-label padding> Marital pressures </ion-label></ion-item
+  >
+  <ion-item lines="none"
+    ><ion-checkbox color="primary"></ion-checkbox
+    ><ion-label padding> LGBTQ+ </ion-label></ion-item
+  >
+  <ion-item lines="none">
+    <ion-checkbox color="primary"></ion-checkbox
+    ><ion-label padding> Other</ion-label></ion-item
+  >
+  <ion-item-divider>
+    <ion-label>  Agreements </ion-label>
+  </ion-item-divider>
+
+  <ion-item>
+      <ion-label>Privacy Policy</ion-label>
+        <ion-checkbox slot="end"></ion-checkbox>
+        <ion-button expand="block" style="padding-left: 5px" slot="end" routerLink="/privacy-policy">View
+        </ion-button>
+  </ion-item>
+
+  <ion-item>
+      <p>Terms and Condtions</p>
+        <ion-checkbox slot="end"></ion-checkbox>
+        <ion-button expand="block" style="padding-left: 5px" slot="end" routerLink="/terms-of-conditions">View
+        </ion-button>
+  </ion-item>
+  
+  <ion-button
+  class="button"
+  fill="solid"
+  expand="full"
+  shape="round"
+  ize="medium"
+  color="primary"
+  >Sign Up</ion-button
+>
+  </ion-content>

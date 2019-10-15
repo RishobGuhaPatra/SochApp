@@ -1,0 +1,35 @@
+<ion-content padding>
+  <ion-item lines="none">
+    <ion-img src="assets/login/LOGO3.png" class="logo"></ion-img>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-img src="assets/login/Illustrations.png" class="art"></ion-img>
+  </ion-item>
+  <ion-item>
+    <ion-icon padding-top size="small" name="mail" color="dark"></ion-icon>
+    <ion-input pattern="email" placeholder="Email" autocorrect="on" [(ngModel)]="username" type="text" color="dark"
+      padding class="input"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-icon padding-top size="small" name="lock" color="dark"></ion-icon>
+    <ion-input pattern="password" padding placeholder="Password" [(ngModel)]="password" type="password" color="dark"
+      inputmode="password" class="input">
+    </ion-input>
+  </ion-item>
+
+  <ion-button shape="round" size="medium" class="button" lines="none" color="primary" fill="solid" (click)="login()"
+    expand="full">
+    <ion-icon padding name="mail"></ion-icon>
+    Login with Email
+  </ion-button>
+
+  <ion-button (click)="register()" fill="clear" size="small" color="dark" expand="full">
+    Sign Up with <ion-icon name="mail"></ion-icon> Email
+  </ion-button>
+  <ion-button fill="clear" size="small" color="dark" expand="full" (click)="resetPassword(username)">
+      Forgot Password?
+    </ion-button>
+</ion-content>
+
+  <!-- <p (click)="send()">send</p> -->

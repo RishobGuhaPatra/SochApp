@@ -1,0 +1,100 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tabs/uploader"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Settings</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-item>
+        <ion-label>Allow Notifications</ion-label>
+        <ion-toggle [(ngModel)]="notification" slot="end" (ionChange)="notificationFlag()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+        <ion-label>Email Updates</ion-label>
+        <ion-toggle [(ngModel)]="emailUpdate" slot="end" (ionChange)="EmailUpdate()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+        <ion-label>Calendar Updates</ion-label>
+        <ion-toggle slot="end"></ion-toggle>
+    </ion-item>
+    <ion-item>
+        <ion-label> Paypal Payments</ion-label>
+        <ion-button color="dark" expand="block" slot="end" (click)="makePayment()">Connect</ion-button>
+    </ion-item>
+    <ion-item>
+        <ion-label>Privacy Policy</ion-label>
+        <ion-button expand="block" slot="end" routerLink="/privacy-policy">View</ion-button>
+    </ion-item>
+    <ion-item>
+        <ion-label>Terms of Agreement</ion-label>
+        <ion-button expand="block" slot="end" routerLink="/terms-of-conditions">View</ion-button>
+    </ion-item>
+    <!-- <ion-item>
+    <ion-label>Allow Notifications</ion-label>
+    <ion-toggle slot="end"></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-label>Email Updates</ion-label>
+    <ion-toggle slot="end"></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-label>Calendar Updates</ion-label>
+    <ion-toggle slot="end"></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-label> Paypal Payments</ion-label>
+    <ion-button color="dark" expand="block" slot="end" (click)="makePayment()">Connect</ion-button>
+  </ion-item>
+  <ion-item>
+    <ion-label>Privacy Policy</ion-label>
+    <ion-button expand="block" slot="end">View</ion-button>
+  </ion-item>
+  <ion-item>
+    <ion-label>Terms of Agreement</ion-label>
+    <ion-button expand="block" slot="end">View</ion-button>
+  </ion-item> -->
+    <!-- new <ion-item>
+        <ion-label>Share</ion-label>
+        <ion-list> -->
+            <!-- <ion-chip  color="primary"> -->
+            <!-- new <ion-icon name="share" slot="end" (click)="share()" size="small" color="warning"></ion-icon> -->
+            <!-- </ion-chip> -->
+            <!-- <ion-chip (click)="gotoInsta()" color="primary"><ion-icon name="logo-instagram"></ion-icon></ion-chip>
+        <ion-chip (click)="gotofb()" color="primary"><ion-icon name="logo-facebook"></ion-icon> </ion-chip>
+        <ion-chip color="primary"><ion-icon name="logo-whatsapp"></ion-icon> </ion-chip>
+        <ion-chip color="primary"><ion-icon name="logo-twitter"></ion-icon> </ion-chip> -->
+        <!-- new </ion-list>
+    </ion-item> -->
+
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-label> Share</ion-label>
+        <br />
+        <br />
+        <ion-fab-button (click)="share()">
+            <ion-icon name="share"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+        <ion-label> Follow Us!</ion-label>
+        <br />
+        <br />
+        <ion-fab-button>
+            <ion-icon name="thumbs-up"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="end">
+            <ion-fab-button (click)="gotofb()">
+                <ion-icon name="logo-facebook"></ion-icon>
+            </ion-fab-button>
+        </ion-fab-list>
+        <ion-fab-list side="start">
+            <ion-fab-button (click)="gotoInsta()">
+                <ion-icon name="logo-instagram"></ion-icon>
+            </ion-fab-button>
+        </ion-fab-list>
+    </ion-fab>
+</ion-content>

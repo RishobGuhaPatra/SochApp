@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button size="small" fill="clear" slot="start">
+      <ion-menu-button size="small" color="dark"></ion-menu-button>
+    </ion-button>
+    <ion-img src="/assets/icon/LoGo.png"></ion-img>
+    
+    <ion-progress-bar *ngIf="ActiveClient.length<1" type="indeterminate"></ion-progress-bar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let key of ActiveClient" (click)="getSessionDetails(key)">
+      <ion-avatar class="chatImage" slot="start">
+          <img  src="../../assets/icon/user.png" *ngIf="!key.profilePic">
+          <img  src="https://ucarecdn.com/{{ key.profilePic }}/{{ scaleCrop }}/" *ngIf="key.profilePic">
+      </ion-avatar>
+    <ion-label>
+      {{key.name}}
+    </ion-label>
+  </ion-item>
+
+</ion-content>

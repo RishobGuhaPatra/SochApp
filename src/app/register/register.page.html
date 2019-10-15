@@ -1,0 +1,237 @@
+<ion-header>
+		<ion-toolbar>
+				<ion-icon name="arrow-back" (click)="back()"></ion-icon>
+			<ion-title>Email Sign Up</ion-title>
+		</ion-toolbar>
+	</ion-header>
+  
+  <ion-content padding>
+		<ion-item lines="none"> 
+			<ion-img src="assets/login/LOGO3.png" class="logo" ></ion-img>
+		</ion-item>
+
+		<!-- Email Input -->
+		<ion-item>
+			<ion-icon padding size="small" name="mail" color="dark"></ion-icon>
+			<ion-input pattern="email" placeholder="Email" autocorrect="on" [(ngModel)]="username" type="text" color="dark" padding class="input"></ion-input>
+		</ion-item>
+		<!-- Password Input -->
+		<ion-item>
+			<ion-icon padding size="small" name="lock" color="dark"></ion-icon>
+			<ion-input pattern="password" padding placeholder="Password" [(ngModel)]="password" type="password" color="dark" inputmode="password" class="input">
+			</ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-icon padding size="small" name="lock" color="dark"></ion-icon>
+			<ion-input pattern="password" padding placeholder="Confirm Password" [(ngModel)]="cpassword" type="password" color="dark" inputmode="password" class="input"></ion-input>
+		</ion-item>
+		<ion-item>
+		<ion-label>Account Type</ion-label>
+			<ion-select [(ngModel)]="loginType" >
+				<ion-select-option value="User">Client</ion-select-option>
+				<ion-select-option value="counsellor">Counsellor</ion-select-option>
+			</ion-select>
+		</ion-item>
+		<div *ngIf="loginType=='User'">
+			<ion-item-divider>
+				<ion-label>
+					Personal Information
+				</ion-label>
+			</ion-item-divider>
+					
+			<ion-item>
+				<ion-input pattern="name" [(ngModel)]="clientDetailForm.firstName" required placeholder="First Name/Preferred Name" autocorrect="on" type="text" color="dark" padding class="input"></ion-input>
+			</ion-item>
+					
+			<ion-item>
+				<ion-input pattern="name" [(ngModel)]="clientDetailForm.middleName" placeholder="Middle Name" autocorrect="on" type="text" color="dark" padding class="input"></ion-input>
+			</ion-item>
+		
+			<ion-item>
+				<ion-input pattern="name" [(ngModel)]="clientDetailForm.lastName" required placeholder="Last Name" autocorrect="on" type="text" color="dark" padding class="input"></ion-input>
+			</ion-item>
+					
+			<ion-item>
+				<ion-label>Gender</ion-label>
+				<ion-select placeholder="Select One" required [(ngModel)]="clientDetailForm.Gender" >
+					<ion-select-option value="f"> Female</ion-select-option>
+					<ion-select-option value="m"> Male</ion-select-option>
+					<ion-select-option value="m"> Prefer not to answer</ion-select-option>
+					<ion-select-option value="m"> Other</ion-select-option>
+				</ion-select>
+			</ion-item>
+		
+			<ion-item>
+				<ion-label>MM DD YY</ion-label>
+				<ion-datetime displayFormat="MM-DD-YY" [(ngModel)]="clientDetailForm.DOB" required placeholder="Select Date"></ion-datetime>
+			</ion-item>
+					
+			<ion-item>
+				<ion-input pattern="name" [(ngModel)]="clientDetailForm.occupation" required placeholder="Occupation" autocorrect="on" type="text" color="dark" padding class="input"></ion-input>
+			</ion-item>
+		
+			<ion-item>
+				<ion-input pattern="name" [(ngModel)]="clientDetailForm.phoneNo" required placeholder="Phone Number" autocorrect="on" type="text" color="dark" padding class="input"></ion-input>
+			</ion-item>
+		
+			<ion-item>
+				<ion-input pattern="name" [(ngModel)]="clientDetailForm.address" required placeholder="Address" autocorrect="on" type="text" color="dark" padding class="input"></ion-input>
+			</ion-item>
+					
+			<ion-item-divider>
+				<ion-label> Additional Information </ion-label>
+			</ion-item-divider>
+		
+			<ion-item lines="none">
+				<ion-label padding>How did you hear about SOCH? </ion-label>
+			</ion-item>
+			<ion-item>
+				<ion-select [(ngModel)]="clientDetailForm.Reference" required placeholder="Select One">
+					<ion-select-option>Family/Friend</ion-select-option>
+					<ion-select-option>Social Media</ion-select-option>
+					<ion-select-option> App Store</ion-select-option>
+					<ion-select-option> Website</ion-select-option>
+					<ion-select-option> Other</ion-select-option>
+				</ion-select>
+			</ion-item>
+
+			<ion-item lines="none">
+				<ion-label padding>Reason for joining Soch?</ion-label>
+			</ion-item>
+					
+			<ion-item lines="none" *ngFor="let key of Form">
+				<ion-checkbox color="primary" [(ngModel)]="key.isChecked"></ion-checkbox>
+				<ion-label padding>{{key.value}}</ion-label>
+			</ion-item>
+					
+			<ion-item-divider>
+				<ion-label> Security Questions </ion-label>
+			</ion-item-divider>
+		
+			<ion-item>
+				<ion-label>What is your mother's maiden name?</ion-label>
+			</ion-item>
+			<ion-item>
+				<ion-input class="ion-text-wrap" [(ngModel)]="clientDetailForm.motherMaidenName" required pattern="name" placeholder="Answer" autocorrect="on" type="text" color="dark" padding class="input"></ion-input>
+			</ion-item>
+		
+			<ion-item>
+				<ion-label class="ion-text-wrap">How many hours of sleep do you usually get?</ion-label>
+			</ion-item>
+		
+			<ion-item>
+			<ion-select [(ngModel)]="clientDetailForm.sleepingHours" required placeholder="Select one">
+				<ion-select-option>Less than 4 hours</ion-select-option>
+				<ion-select-option> 5 hours</ion-select-option>
+				<ion-select-option> 6 hours </ion-select-option>
+				<ion-select-option> 7 hours</ion-select-option>
+				<ion-select-option> 8 hours</ion-select-option>
+				<ion-select-option> 9 hours</ion-select-option>
+				<ion-select-option> More than 8 hours</ion-select-option>
+			</ion-select>
+			</ion-item>
+		
+			<ion-item>
+				<ion-input [(ngModel)]="clientDetailForm.Pin4Digit" required pattern="name" min='0' max='9' placeholder=" Create 4-digit PIN" autocorrect="on" type="number" color="dark" padding class="input"></ion-input>
+			</ion-item>
+		
+			<ion-item>
+				<ion-input [(ngModel)]="clientDetailForm.ConfirmPin4Digit" required pattern="name" min='0' max='9' placeholder="Confirm 4-digit PIN " autocorrect="on" type="number" color="dark" padding class="input"></ion-input>
+			</ion-item>
+		</div>
+		<div *ngIf="loginType=='counsellor'">
+			<ion-item-divider>
+				<ion-label>
+					Personal Information
+				</ion-label>
+			</ion-item-divider>
+				
+			<ion-item>
+				<ion-input pattern="name" [(ngModel)]="counsellorDetailForm.firstName" required placeholder="First Name/Preferred Name" autocorrect="on" type="text" color="dark" padding class="input"></ion-input>
+			</ion-item>
+				
+			<ion-item>
+				<ion-input pattern="name" [(ngModel)]="counsellorDetailForm.middleName" placeholder="Middle Name" autocorrect="on" type="text" color="dark" padding class="input"></ion-input>
+			</ion-item>
+				
+			<ion-item>
+				<ion-input pattern="name" [(ngModel)]="counsellorDetailForm.lastName" required placeholder="Last Name" autocorrect="on" type="text" color="dark" padding class="input"></ion-input>
+			</ion-item>
+					
+			<ion-item>
+				<ion-label>Gender</ion-label>
+				<ion-select placeholder="Select One" [(ngModel)]="counsellorDetailForm.Gender" required>
+					<ion-select-option value="f"> Female</ion-select-option>
+					<ion-select-option value="m"> Male</ion-select-option>
+					<ion-select-option value="m"> Prefer not to answer</ion-select-option>
+					<ion-select-option value="m"> Other</ion-select-option>
+				</ion-select>
+			</ion-item>
+					
+			<ion-item>
+				<ion-label>MM DD YY</ion-label>
+				<ion-datetime displayFormat="MM DD YY" [(ngModel)]="counsellorDetailForm.DOB" required placeholder="Select Date"></ion-datetime>
+			</ion-item>
+		
+			<ion-item>
+				<ion-input pattern="name" [(ngModel)]="counsellorDetailForm.occupation" required placeholder="Occupation" autocorrect="on" type="text" color="dark" padding class="input"></ion-input>
+			</ion-item>
+					
+			<ion-item>
+				<ion-input pattern="name" [(ngModel)]="counsellorDetailForm.phoneNo" required placeholder="Phone Number" autocorrect="on" type="text" color="dark" padding class="input"></ion-input>
+			</ion-item>
+					
+			<ion-item>
+				<ion-input pattern="name" [(ngModel)]="counsellorDetailForm.address" required placeholder="Address" autocorrect="on" type="text" color="dark" padding class="input"></ion-input>
+			</ion-item>
+					
+			<ion-label padding >Education</ion-label>
+			<ion-item>
+				<ion-textarea [(ngModel)]="counsellorDetailForm.educationInfo" required placeholder="Please write any formal training or education you have."></ion-textarea>
+			</ion-item>
+					
+			<ion-label padding >Short Biography</ion-label>
+			<ion-item>
+				<ion-textarea [(ngModel)]="counsellorDetailForm.bio" required placeholder="Please write within 200 words."></ion-textarea>
+			</ion-item>
+					
+			<ion-item-divider>
+				<ion-label>
+					Preferred Topics of Counseling
+				</ion-label>
+			</ion-item-divider>
+					
+			<ion-item lines="none" *ngFor="let key of Form">
+				<ion-checkbox color="primary" [(ngModel)]="key.isChecked"></ion-checkbox>
+				<ion-label padding>{{key.value}}</ion-label>
+			</ion-item>
+			<ion-item>
+				<ion-input [(ngModel)]="counsellorDetailForm.Pin4Digit" required pattern="name" min='0' max='9' placeholder=" Create 4-digit PIN" autocorrect="on" type="number" color="dark" padding class="input"></ion-input>
+			</ion-item>
+		
+			<ion-item>
+				<ion-input [(ngModel)]="counsellorDetailForm.ConfirmPin4Digit" required pattern="name" min='0' max='9' placeholder="Confirm 4-digit PIN " autocorrect="on" type="number" color="dark" padding class="input"></ion-input>
+			</ion-item>
+		</div>
+		<ion-item-divider>
+			<ion-label>  Agreements </ion-label>
+		</ion-item-divider>
+			
+		<ion-item *ngFor="let key of agreement">
+			<ion-label >{{key.value}}</ion-label>
+			<ion-checkbox class="PrivacyCheckbox" [(ngModel)]="key.isChecked" slot="end" style="position: relative"></ion-checkbox>
+			<ion-button expand="block" style="padding-left: 5px" slot="end" [routerLink]="[key.route]">View
+			</ion-button>
+		</ion-item>
+			
+		<!-- <ion-item>
+			<p>Terms and Condtions</p>
+			<ion-checkbox class="TermCheckbox" slot="end" style="position: relative"></ion-checkbox>
+			<ion-button expand="block" style="padding-left: 5px" slot="end" [routerLink]="['/terms-of-conditions']">View
+			</ion-button>
+		</ion-item> -->
+		
+
+		<ion-button  class="button" fill="solid" expand="full" shape="round" size="medium" color="primary" (click)="register(loginType=='User'?clientDetailForm:counsellorDetailForm)">Signup</ion-button>
+  </ion-content>

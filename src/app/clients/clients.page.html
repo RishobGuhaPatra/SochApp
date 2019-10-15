@@ -1,0 +1,63 @@
+
+ <ion-header>
+  <ion-toolbar>
+    <ion-button size="small" fill="clear" slot="start">
+      <ion-menu-button size="small" color="dark"></ion-menu-button>
+    </ion-button>
+    <ion-img src="/assets/icon/LoGo.png"></ion-img>
+    <ion-icon padding name="person-add" slot="end" [routerLink]="['/counselor-chat']" fill="outline" shape="round" size="small"
+      color="dark"></ion-icon>
+    <ion-progress-bar *ngIf="ClientList.length<1" type="indeterminate"></ion-progress-bar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing...">
+        </ion-refresher-content>
+      </ion-refresher>
+<ion-list >
+<ion-item-sliding id="item100" *ngFor="let key of ClientList">
+  <ion-item >
+      <ion-avatar class="chatImage" slot="start">
+          <img  src="../../assets/icon/user.png" *ngIf="!key.profilePic">
+          <img  src="https://ucarecdn.com/{{ key.profilePic }}/{{ scaleCrop }}/" *ngIf="key.profilePic">
+      </ion-avatar>
+    <ion-label>
+      <h2> {{key.name?key.name:key.username}}</h2>
+      <p>{{key.last_messageKey?key.chat[key.last_messageKey].msg:''}}</p>
+      <!-- <h3>High Gamma wave Alert | Feel Score: 8 Sad</h3> -->
+    </ion-label>
+    <ion-note slot="end">
+      {{key.chat[key.last_messageKey]?key.chat[key.last_messageKey].time:''}}
+    </ion-note>
+  </ion-item>
+
+  <ion-item-options side="start">
+    <ion-item-option (click)="gotoJournel(key.sender_id==LoggedInUserData.uid?key.reciver_id:key.sender_id)">
+        <ion-icon slot="icon-only" name="journal"></ion-icon> 
+        <ion-label>Journal</ion-label>
+    </ion-item-option>
+  </ion-item-options>
+
+  <ion-item-options side="end">
+      <ion-item-option color="primary" (click)="gotoSessionNotes(key.uid)">
+          <ion-icon slot="icon-only" name="clipboard"></ion-icon>
+          <ion-label>Notes</ion-label>
+        </ion-item-option>
+        <ion-item-option color="secondary" (click)="session(key.sender_id==LoggedInUserData.uid?key.reciver_id:key.sender_id,key.name)">
+          <ion-icon slot="icon-only" name="text"></ion-icon>
+        </ion-item-option>
+        <!-- <ion-item-option color="success" (click)="gotoCaller('key.reciver_details.phoneNo')">
+           <ion-icon slot="icon-only" color="light" name="call"></ion-icon>
+        </ion-item-option> -->
+  </ion-item-options>
+</ion-item-sliding>
+</ion-list>
+</ion-content>
+
+
