@@ -35,6 +35,9 @@ const routes: Routes = [
   { path: 'rate-counselor', loadChildren: './rate-counselor/rate-counselor.module#RateCounselorPageModule' },
   { path: 'finance', loadChildren: './finance/finance.module#FinancePageModule' },
   { path: 'session-details', loadChildren: './session-details/session-details.module#SessionDetailsPageModule' },
+  { path: 'soch-chart', loadChildren: './soch-chart/soch-chart.module#SochChartPageModule' },
+  
+
 
 
 

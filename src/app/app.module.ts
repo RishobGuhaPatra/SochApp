@@ -45,6 +45,7 @@ import { Vibration } from '@ionic-native/vibration/ngx';
 import { GlobalService } from '../app/global/global.service';
 import { IOSFilePicker } from '@ionic-native/file-picker/ngx';
 import { BrowserTab } from '@ionic-native/browser-tab/ngx';
+import * as HighCharts from 'highcharts';
 // import { AppLauncher, AppLauncherOptions } from '@ionic-native/app-launcher/ngx';
 // import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 var firebaseConfig = {
@@ -106,7 +107,8 @@ var firebaseConfig = {
 		GlobalService,
 		AngularFireStorage,
 		SocialSharing,
-		BrowserTab
+		BrowserTab,
+		
 		// InAppBrowser
 		// AppLauncher
 		// {

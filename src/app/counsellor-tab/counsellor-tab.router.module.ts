@@ -16,6 +16,7 @@ const routes: Routes = [
 			{ path: 'edit-profile', loadChildren: '../edit-profile/edit-profile.module#EditProfilePageModule' },
 			{ path: 'counselor-chat', loadChildren: '../counselor-chat/counselor-chat.module#CounselorChatPageModule' },
 			{ path: 'clients', loadChildren: '../clients/clients.module#ClientsPageModule' },
+			{ path: 'soch-chart', loadChildren: '../soch-chart/soch-chart.module#SochChartPageModule' },
 			// { path: 'finances', loadChildren: '../finances/finances.module#FinancesPageModule' },
 		]
 	}	

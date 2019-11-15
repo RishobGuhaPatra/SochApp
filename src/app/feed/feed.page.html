@@ -63,6 +63,7 @@
           </ion-label>
         </ion-chip>
         <ion-icon name="text" slot="end" color="warning" (click)="commentopen(post,i)"></ion-icon>
+        <ion-icon slot="end" color="warning" ios="ios-alert" md="md-alert" (click)="report(post,i)"></ion-icon>
       </ion-item>
       <ion-card-content *ngIf="post.iscomment">
         <ion-chip [hidden]="!post.comment && post.comment.length < 0" *ngFor="let comment of post.comment">

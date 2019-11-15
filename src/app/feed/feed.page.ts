@@ -9,6 +9,7 @@ import * as firebase from 'firebase';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: "app-feed",
@@ -37,7 +38,8 @@ export class FeedPage implements OnInit {
     public socialSharing: SocialSharing,
     private iab: InAppBrowser,
     public db: AngularFireDatabase,
-    public changedetect: ChangeDetectorRef
+    public changedetect: ChangeDetectorRef,
+    public toastCtrl:ToastController
   ) { }
 
   ngOnInit() {
@@ -104,6 +106,7 @@ export class FeedPage implements OnInit {
       }
       this.posts.push(item);
       this.posts = this.posts.reverse();
+      console.log("this.posts",this.posts)
       // for (let index = 0; index < this.posts.length; index++) {
       //   this.posts[index].iscomment = false;
       //   if (this.posts[index].comment) {
@@ -406,4 +409,20 @@ share(post) {
 openurl(url) {
   const browser = this.iab.create(url);
 }
+  report(post,i){
+    var key:any =post.key;
+    firebase.database().ref("ReportedData").child(post.key).set(post);
+    this.presentToast("Post will be reviewed and action will be taken by admin");
+    // this.posts.splice(i,i+1)
+    console.log(this.posts)
+
+  }
+  async presentToast(msg) {
+    const toast = await this.toastCtrl.create({
+      message: msg,
+      duration: 2000
+    });
+    toast.present();
+  }
+
 }

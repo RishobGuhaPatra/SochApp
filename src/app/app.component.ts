@@ -48,6 +48,11 @@ export class AppComponent {
           title: 'Rates',
           url: 'rates',
           icon: 'pricetags'
+        },
+        {
+          title: 'Soch Connect',
+          url: 'soch-chart',
+          icon: 'md-wifi'
         }
       ];
     }
@@ -67,7 +72,13 @@ export class AppComponent {
         //   title: 'Rates',
         //   url: 'rates',
         //   icon: 'pricetags'
-        // }
+        // },
+        {
+          title: 'Soch Connect',
+          url: 'soch-chart',
+          icon: 'md-wifi'
+        }
+
       ];
 
     }
