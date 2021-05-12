@@ -48,7 +48,7 @@
     "angularfire2": "^5.1.3",
     "call-number": "^1.0.1",
     "card.io.cordova.mobilesdk": "2.1.0",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "com.paypal.cordova.mobilesdk": "3.5.0",
     "cordova-android": "^8.1.0",
     "cordova-plugin-app-launcher": "^0.4.0",
